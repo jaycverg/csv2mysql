@@ -12,7 +12,7 @@ ${rows.map(row => `(${row.map(c => `"${c}"`).join(', ')})`).join(',\n')}
 
 
 // main function
-module.exports = (config) => {
+module.exports = async (config) => {
 
   const masterDataConfig = config.masterData || {}
 
@@ -121,10 +121,16 @@ module.exports = (config) => {
     }
   }
 
-  fs.createReadStream(config.source)
-    .pipe(csv({}))
-    .on('headers', processHeaders)
-    .on('data', processLine)
-    .on('end', generateSql)
+  return new Promise((resolve, reject) => {
+    fs.createReadStream(config.source)
+      .pipe(csv({}))
+      .on('headers', processHeaders)
+      .on('data', processLine)
+      .on('end', () => {
+        generateSql()
+        resolve()
+      })
+      .on('error', error => reject(error))
+  })
 
 }
