@@ -1,0 +1,4 @@
+id,first_name,last_name,types
+1,aaaa,aaaa,"type1,type2"
+2,bbbb,bbbb,"type2"
+3,cccc,cccc,"type1,type3"

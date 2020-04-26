@@ -1,0 +1,12 @@
+{
+  "name": "csv2mysql",
+  "version": "1.0.0",
+  "description": "csv to mysql insert statements parser",
+  "main": "index.js",
+  "author": "jaycverg@gmail.com",
+  "license": "MIT",
+  "dependencies": {
+    "csv-parser": "^2.3.2"
+  },
+  "repository": "git@github.com:jaycverg/csv2mysql.git"
+}
